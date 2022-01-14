@@ -46,7 +46,7 @@ background-color: #15b939;
  .search-wrapper {
      position: absolute;
      transform: translate(-50%, -50%);
-     top: 31%;
+     top: 300px;
      left:50%;
  }
  
@@ -200,7 +200,7 @@ background-color: #15b939;
  .search-wrapper-2 {
      position: absolute;
      transform: translate(-50%, -50%);
-     top:42%;
+     top: 400px;
      left:50%;
  }
  
