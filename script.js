@@ -1,14 +1,20 @@
 let artist_name = ""
 let song_name = ""
 
+document.getElementById("previous").style.display = "none"
+
+
 function list_songs(artist, song) {
-    document.getElementById("search-wrapper").style.display = 'none';
+    document.getElementById("result").innerHTML = ""
+    document.getElementById("previous").style.display = "block";
     document.getElementById("search-wrapper-2").style.display = 'none';
+    document.getElementById("search-wrapper").style.display = 'none';
     document.getElementById("artist-label").style.display = 'none';
     document.getElementById("song-label").style.display = 'none';
     document.getElementById("songs-like").innerHTML = "Songs Like: " + song
     document.getElementById("songs-like").style.paddingTop = "30px";
     document.getElementById("copyright").style.paddingTop = "20px"
+    document.getElementById("result").style.display = "block";
     $(document).ready(function() {
         $.getJSON("http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=" + artist + "&track=" + song +"&autocorrect[0|1]&api_key=51a4048bb0c0585454fb141080d508ad&limit=15&format=json", function(json) {
             var html = '';
@@ -17,6 +23,11 @@ function list_songs(artist, song) {
                     html += "<h3><a href=" + item.url + " target='_blank'>" + item.name + " By " + item.artist.name + "</a></h3>";
                 });
             } catch (error) {
+                html = '';
+                alert("An Error Acoured, Most Likely That Isn't A Song")
+                document.getElementById("result").style.display = "none";
+                document.getElementById("previous").style.display = "none";
+                document.getElementById("copyright").style.paddingTop = "320px"
                 document.getElementById("search-wrapper").style.display = 'block';
                 document.getElementById("search-wrapper-2").style.display = 'block';
                 document.getElementById("artist-label").style.display = 'block';
@@ -24,9 +35,8 @@ function list_songs(artist, song) {
                 document.getElementById("songs-like").innerHTML = "Songs Like:"
                 document.getElementById("songs-like").style.paddingTop = "100px";
                 document.getElementById("copyrght").style.paddingTop = "450px"
-                alert("An Error Acoured, That Probobly Isn't A Song")
             }
-            $('#result').append(html);
+            $('#result').append(html)
         });
     });
 }
@@ -64,4 +74,18 @@ function searchToggle2(obj, evt){
             let searchInput = document.getElementById("search-input-2").value
             document.getElementById("search-input").value ? list_songs(document.getElementById("search-input").value, searchInput) : alert("Please Fill Out All Properties.")
         }
+}
+
+
+function returnToHome() {
+    document.getElementById("previous").style.display = "none";
+    document.getElementById("copyright").style.paddingTop = "320px"
+    document.getElementById("search-wrapper").style.display = 'block';
+    document.getElementById("search-wrapper-2").style.display = 'block';
+    document.getElementById("artist-label").style.display = 'block';
+    document.getElementById("song-label").style.display = 'block';
+    document.getElementById("songs-like").innerHTML = "Songs Like:"
+    document.getElementById("songs-like").style.paddingTop = "100px";
+    document.getElementById("copyright").style.paddingTop = "450px"
+    document.getElementById("result").style.display = "none";
 }

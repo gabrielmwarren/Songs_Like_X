@@ -46,7 +46,7 @@ background-color: #15b939;
  .search-wrapper {
      position: absolute;
      transform: translate(-50%, -50%);
-     top: 32%;
+     top: 31%;
      left:50%;
  }
  
@@ -190,7 +190,7 @@ background-color: #15b939;
     color: white;
     text-align: center;
     font-family: sans-serif;
-    padding-top: 90px;
+    padding-top: 68px;
 }
 
 ::selection {
@@ -200,7 +200,7 @@ background-color: #15b939;
  .search-wrapper-2 {
      position: absolute;
      transform: translate(-50%, -50%);
-     top:46%;
+     top:42%;
      left:50%;
  }
  
@@ -338,3 +338,22 @@ p {
     text-align: center;
     padding-top: 450px;
 }
+
+button {
+    position: absolute;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
+  
+  button:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .previous {
+    background-color: #00ff15;
+    color: black;
+  }
+  
