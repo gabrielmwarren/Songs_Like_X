@@ -8,6 +8,7 @@ function list_songs(artist, song) {
     document.getElementById("song-label").style.display = 'none';
     document.getElementById("songs-like").innerHTML = "Songs Like: " + song
     document.getElementById("songs-like").style.paddingTop = "30px";
+    document.getElementById("copyright").style.paddingTop = "20px"
     $(document).ready(function() {
         $.getJSON("http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=" + artist + "&track=" + song +"&autocorrect[0|1]&api_key=51a4048bb0c0585454fb141080d508ad&limit=15&format=json", function(json) {
             var html = '';
@@ -22,6 +23,7 @@ function list_songs(artist, song) {
                 document.getElementById("song-label").style.display = 'block';
                 document.getElementById("songs-like").innerHTML = "Songs Like:"
                 document.getElementById("songs-like").style.paddingTop = "100px";
+                document.getElementById("copyrght").style.paddingTop = "450px"
                 alert("An Error Acoured, That Probobly Isn't A Song")
             }
             $('#result').append(html);
