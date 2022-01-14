@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Songs Like X</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Songs Like X</h1>
+    <h4></h4>
+    <h2 class="songs-like" id="songs-like">Songs Like:</h2>
+    <h3 id="artist-label" class="artist-label">Artist:</h3>
+    <div class="search-wrapper" id="search-wrapper">
+        <div class="input-holder">
+            <input type="text" class="search-input" id="search-input" placeholder="Artist..." />
+            <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+        </div>
+        <span class="close" onclick="searchToggle(this, event);"></span>
+    </div>
+    <h3 id="song-label" class="song-label">Song:</h3>
+    <div class="search-wrapper-2" id="search-wrapper-2">
+        <div class="input-holder">
+            <input type="text" class="search-input" id="search-input-2" placeholder="Song..." />
+            <button class="search-icon" onclick="searchToggle2(this, event);"><span></span></button>
+        </div>
+        <span class="close" onclick="searchToggle2(this, event);"></span>
+    </div>
+    <script src="script.js"></script>
+    <div class="result" id="result"></div>
+    <p>Copyright 2022 Gabriel M. Warren</p>
+</body>
+</html>
