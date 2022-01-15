@@ -6,28 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Songs Like X</title>
     <script src="jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="bootstrap.css">
 </head>
 <body>
+    <div class="alert alert-dismissible alert-danger not-e-info">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Please Fill Out Artist And Song. </strong> Then Press Enter.
+      </div>
     <h1>Songs Like X</h1>
-    <button class="previous" id="previous" onclick="returnToHome()">&laquo; Previous</button>
+    <button class="btn btn-success previous" id="previous" onclick="returnToHome()">&laquo; Previous</button>
     <h4></h4>
     <h2 class="songs-like" id="songs-like">Songs Like:</h2>
     <h3 id="artist-label" class="artist-label">Artist:</h3>
-    <div class="search-wrapper" id="search-wrapper">
-        <div class="input-holder">
-            <input type="text" class="search-input" id="search-input" placeholder="Artist..." />
-            <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
-        </div>
-        <span class="close" onclick="searchToggle(this, event);"></span>
-    </div>
+    <div class="search-container" id="search-container">
+        <input type="text" id="search-text" placeholder="Search...">
+        <div class="search-area"></div>
+      </div>
     <h3 id="song-label" class="song-label">Song:</h3>
-    <div class="search-wrapper-2" id="search-wrapper-2">
-        <div class="input-holder">
-            <input type="text" class="search-input" id="search-input-2" placeholder="Song..." />
-            <button class="search-icon" onclick="searchToggle2(this, event);"><span></span></button>
-        </div>
-        <span class="close" onclick="searchToggle2(this, event);"></span>
+    <div class="search-container search-container-2" id="search-container-2">
+        <input type="text"  id="search-text-2" placeholder="Search...">
+        <div class="search-area"></div>
+      </div>
+    <div class="d-grid gap-2 enter-button">
+        <button class="btn btn-lg btn-secondary" id="enterButton" type="button" onclick="button_pressed()">Enter</button>
     </div>
     <div class="result" id="result"></div>
     <p class="copyright" id="copyright">Copyright 2022 Gabriel M. Warren</p>
