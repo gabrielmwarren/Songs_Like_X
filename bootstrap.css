@@ -11990,7 +11990,7 @@ legend {
 }
 
 .song-label {
-  padding-top: 100px;
+  position: relative;
 }
 
 .copyright {
@@ -12000,8 +12000,8 @@ legend {
 }
 
 .enter-button {
+  position: relative;
   padding-left: 5%;
-  padding-top: 150px;
   width: 95%;
 }
 
@@ -12039,13 +12039,11 @@ html, body {
 
 
 .search-container {
-  position: absolute;
-  margin: auto;
+  position: relative;
   top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  bottom: 250px;
-  width: 500px;
   height: 100px;
 }
 .search-container .search-area {
@@ -12154,6 +12152,6 @@ html, body {
 
 
 .search-container-2 {
-  top: 280px;
+  position: relative;
 }
 
