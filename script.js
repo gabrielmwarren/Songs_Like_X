@@ -20,7 +20,7 @@ function list_songs(artist, song) {
     document.getElementById("result").style.display = "block";
     document.getElementById("enterButton").style.display = "none";
     $(document).ready(function() {
-        $.getJSON("http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=" + artist + "&track=" + song +"&autocorrect[0|1]&api_key=" + api_key +"&limit=15&format=json", function(json) {
+        $.getJSON("http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=" + artist + "&track=" + song +"&autocorrect[0|1]&api_key=" + api_key +"&limit=25&format=json", function(json) {
             var html = '';
             try {
                 html += `
