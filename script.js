@@ -2,6 +2,8 @@ let artist_name = ""
 let song_name = ""
 
 document.getElementById("previous").style.display = "none"
+document.getElementById("show_btn").style.display = "none"
+
 
 
 function list_songs(artist, song) {
@@ -12,6 +14,7 @@ function list_songs(artist, song) {
     document.getElementById("search-container-2").style.display = 'none';
     document.getElementById("artist-label").style.display = 'none';
     document.getElementById("song-label").style.display = 'none';
+    document.getElementById("songs-like").style.paddingBottom = "40px";
     document.getElementById("songs-like").innerHTML = "Songs Like " + song.toUpperCase();
     document.getElementById("songs-like").style.paddingTop = "30px";
     document.getElementById("result").style.display = "block";
@@ -20,12 +23,48 @@ function list_songs(artist, song) {
         $.getJSON("http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=" + artist + "&track=" + song +"&autocorrect[0|1]&api_key=" + api_key +"&limit=15&format=json", function(json) {
             var html = '';
             try {
+                html += `
+                <table class="table table-hover table-song-head">
+                    <thead>
+                        <tr>
+                        <th scope="col">List:</th>
+                        <th scope="col">Artist</th>
+                        <th scope="col">Song</th>
+                        <th scope="col">Duration</th>
+                        <th scope="col">Play</th>
+                        </tr>
+                    </thead>
+                    <tbody>`
                 $.each(json.similartracks.track, function(i, item) {
-                    html += "<h3 class='results-line" + i + "' id='results-line" + i + "'><a href=" + item.url + " target='_blank'>" + item.name + " By " + item.artist.name + "</a></h3>";
+                    let artist = item.artist.name
+                    let song = item.name
+                    let song_duration_string = "" + item.duration
+                    let noSpaceArtist = artist.replace(/\s/g, '')
+                    let noSpaceSong = song.replace(/\s/g, '-')
+                    noSpaceArtist = noSpaceArtist.replace(/é/gi, "e")
+                    noSpaceArtist = noSpaceArtist.replace(/é/gi, "e")
+                    console.log(noSpaceArtist)
+                    if (!(song_duration_string == "0") && !(song_duration_string == "undefined")) {
+                        var song_duration = song_duration_string.slice(0, 1) + "." + song_duration_string.slice(1, 3) + " mins";
+                    } else {
+                        var song_duration = "No Value"
+                    }
+                    html += `<tr class="table-primary">
+                                <th scope="row">Song:</th>
+                                <td>` + item.artist.name +`</td>
+                                <td>`+ item.name +`</td>
+                                <td>` + song_duration +`</td>
+                                <td><button class="btn play-btn" id="play-btn" onclick="show_soundcloud('${noSpaceArtist}', '${noSpaceSong}')"><i class="far fa-play-circle fa-2x"></i></button></td>
+                            </tr>`
+                    
                 });
-            } catch (error) {
+                html += "</tbody>"
+                $('#result').append(html)
+            }
+            catch (error) {
                 html = '';
                 alert("An Error Acoured, Most Likely That Isn't A Song")
+                alert(error)
                 document.getElementById("result").style.display = "none";
                 document.getElementById("previous").style.display = "none";
                 document.getElementById("copyright").style.paddingTop = "500px"
@@ -37,8 +76,9 @@ function list_songs(artist, song) {
                 document.getElementById("songs-like").style.paddingTop = "100px";
                 document.getElementById("enterButton").style.display = "block";
                 document.getElementById("copyright").style.paddingTop = "250px";
+                document.getElementById("songs-like").style.paddingBottom = "0px";
+                $('#result').append(html)
             }
-            $('#result').append(html)
         });
     });
 }
@@ -58,6 +98,7 @@ function returnToHome() {
     document.getElementById("copyright").style.paddingTop = "250px"
     document.getElementById("result").style.display = "none";
     document.getElementById("enterButton").style.display = "block";
+    document.getElementById("songs-like").style.paddingBottom = "0px";
 }
 
 
@@ -65,4 +106,24 @@ function button_pressed() {
     let songSearchInput = document.getElementById("search-text-2")
     let artistSearchInput = document.getElementById("search-text")
     songSearchInput.value && artistSearchInput.value ? list_songs(artistSearchInput.value, songSearchInput.value) : null;
+}
+
+function show_soundcloud(artist, song) {
+    let html = ``
+    let url = "https://w.soundcloud.com/player/?url=https://soundcloud.com/" + artist + "/" + song
+    console.log(url)
+    html = `<button class="btn" onclick="hide_player()"><i class="fas fa-times-circle"></i></button>`
+    html += `<iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay" src="${url}"></iframe>`
+    document.getElementById("soundcloud").innerHTML = html
+}
+
+
+function hide_player() {
+    document.getElementById("soundcloud").style.display = "none"
+    document.getElementById("show_btn").style.display = "block"
+}
+
+function show_player() {
+    document.getElementById("soundcloud").style.display = "block"
+    document.getElementById("show_btn").style.display = "none"
 }

@@ -12155,3 +12155,18 @@ html, body {
   position: relative;
 }
 
+.table-song-head {
+  width: 60%;
+  margin-left: 20%;
+}
+
+.soundcloud {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+
+.show_btn {
+  position: fixed;
+  bottom: 0;
+}
