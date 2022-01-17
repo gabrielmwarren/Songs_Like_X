@@ -108,16 +108,6 @@ function button_pressed() {
     songSearchInput.value && artistSearchInput.value ? list_songs(artistSearchInput.value, songSearchInput.value) : null;
 }
 
-function show_soundcloud(artist, song) {
-    let html = ``
-    let url = "https://w.soundcloud.com/player/?url=https://soundcloud.com/" + artist + "/" + song
-    console.log(url)
-    html = `<button class="btn" onclick="hide_player()"><i class="fas fa-times-circle"></i></button>`
-    html += `<iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay" src="${url}"></iframe>`
-    document.getElementById("soundcloud").innerHTML = html
-}
-
-
 function hide_player() {
     document.getElementById("soundcloud").style.display = "none"
     document.getElementById("show_btn").style.display = "block"
@@ -127,3 +117,15 @@ function show_player() {
     document.getElementById("soundcloud").style.display = "block"
     document.getElementById("show_btn").style.display = "none"
 }
+
+function show_soundcloud(artist, song) {
+    show_player()
+    let html = ``
+    let url = "https://w.soundcloud.com/player/?url=https://soundcloud.com/" + artist + "/" + song
+    console.log(url)
+    html = `<button class="btn" onclick="hide_player()"><i class="fas fa-times-circle"></i></button>`
+    html += `<iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay" src="${url}"></iframe>`
+    document.getElementById("soundcloud").innerHTML = html
+}
+
+
