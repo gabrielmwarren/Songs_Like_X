@@ -12170,3 +12170,8 @@ html, body {
   position: fixed;
   bottom: 0;
 }
+
+.match-list {
+  display: table;
+  margin: 0 auto;
+}
