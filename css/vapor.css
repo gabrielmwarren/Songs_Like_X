@@ -12175,3 +12175,15 @@ html, body {
   display: table;
   margin: 0 auto;
 }
+
+.change-theme {
+  margin-left: 85%;
+}
+
+.settings-menu {
+  display: none;
+  position: absolute;
+  margin-left: 41%;
+  width: 18%;
+  z-index: 10;
+}

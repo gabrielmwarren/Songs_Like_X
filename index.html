@@ -7,15 +7,47 @@
     <title>Songs Like X</title>
     <script src="jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
-    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" type ="text/css" id="stylesheet" href="css/morph.css">
 </head>
 <body>
-    <div class="alert alert-dismissible alert-danger not-e-info">
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <strong>Please Fill Out Artist And Song. </strong> Then Press Enter.
-    </div>
     <h1>Songs Like X</h1>
     <button class="btn btn-success previous" id="previous" onclick="returnToHome()">&laquo; Previous</button>
+    <div class="change-theme">
+      <button class="btn settings" onclick="openSettings()"><i class="fas fa-cog"></i></button>
+    </div>
+    <div class="settings-menu" id="settings">
+      <div class="card border-primary mb-3" style="height: auto;">
+        <div class="card-body">
+          <h1 class="card-title">Settings</h1>
+          <h4 class="card-text">Songs Like X Settings Menu</h4>
+          <form>
+            <fieldset>
+              <div class="form-group">
+                <h4 class="form-label mt-4">Theme</h4>
+                <select class="form-select" id="select-theme">
+                  <option>cyborg</option>
+                  <option>flatly</option>
+                  <option>litera</option>
+                  <option>lux</option>
+                  <option>morph</option>
+                  <option>superhero</option>
+                  <option>vapor</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="resultSetting" class="form-label mt-4">Number of results</label>
+                <input type="number" class="form-control" id="numberInput"  placeholder="Enter number">
+                <small class="form-text text-muted">From 3 to 40.</small>
+              </div>
+            <div class="d-grid gap-2">
+              <button class="btn btn-lg btn-secondary" type="button" onclick="closeSettings()" style="margin-top: 50px;">Close/Save</button>
+            </div>
+            </fieldset>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <h4></h4>
     <h2 class="songs-like" id="songs-like">Songs Like:</h2>
     <h3 id="artist-label" class="artist-label">Artist:</h3>
