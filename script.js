@@ -73,7 +73,6 @@ function list_songs(artist, song) {
                 alert("An Error Acoured, Most Likely That Isn't A Song")
                 document.getElementById("result").style.display = "none"
                 document.getElementById("previous").style.display = "none"
-                document.getElementById("copyright").style.paddingTop = "500px"
                 document.getElementById("search-container").style.display = 'block'
                 document.getElementById("search-container-2").style.display = 'block'
                 document.getElementById("artist-label").style.display = 'block'
