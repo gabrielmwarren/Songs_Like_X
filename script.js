@@ -208,7 +208,7 @@ function closeSettings() {
     if (document.getElementById("numberInput").value > 40 || document.getElementById("numberInput").value < 3) {
         html = `<div class="form-group has-danger">
                     <label class="form-label mt-4" for="numberInput">Number of results</label>
-                    <input type="text" value="" class="form-control is-invalid" id="numberInput" value="${localSongLimit}">
+                    <input type="text" value="" class="form-control is-invalid" id="numberInput" value="${songLimit}">
                     <div class="invalid-feedback">You Can't Use That Number?</div>
                 </div>`
       document.getElementById("numberSpace").innerHTML = html
