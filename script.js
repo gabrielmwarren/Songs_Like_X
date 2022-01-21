@@ -1,9 +1,15 @@
 let artist_name = ""
 let song_name = ""
+let songLimit = "20"
 const api_key = "51a4048bb0c0585454fb141080d508ad"
 
 document.getElementById("previous").style.display = "none"
 document.getElementById("show_btn").style.display = "none"
+let html = `<div class="form-group" id="numberOfResults">
+<label for="resultSetting" class="form-label mt-4">Number of results</label>
+<input type="number" class="form-control" id="numberInput"  placeholder="Enter number">
+<small class="form-text text-muted">From 3 to 40.</small>
+</div>`
 
 
 
@@ -22,7 +28,7 @@ function list_songs(artist, song) {
     document.getElementById("match-list").style.display = 'none'
     document.getElementById("match-list-2").style.display = 'none'
     $(document).ready(function() {
-        $.getJSON("http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=" + artist + "&track=" + song +"&autocorrect[0|1]&api_key=" + api_key +"&limit=25&format=json", function(json) {
+        $.getJSON("http://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=" + artist + "&track=" + song +"&autocorrect[0|1]&api_key=" + api_key +"&limit=" + songLimit + "&format=json", function(json) {
             var html = ''
             try {
                 html += `
@@ -189,11 +195,27 @@ function fillText(itemName, field) {
 
 function openSettings() {
     document.getElementById("settings").style.display = "block"
+    let html = `<div class="form-group">
+                    <label for="resultSetting" class="form-label mt-4">Number of results</label>
+                    <input type="number" class="form-control" id="numberInput"  placeholder="Enter number" value="${songLimit}">
+                    <small class="form-text text-muted">From 3 to 40.</small>
+                </div>`
+    document.getElementById("numberSpace").innerHTML = html
 }
 
 function closeSettings() {
-    document.getElementById("settings").style.display = "none"
-    document.getElementById("stylesheet").setAttribute(`href`, `css/${document.getElementById("select-theme").value}.css`)
+    songLimit = document.getElementById("numberInput").value
+    if (document.getElementById("numberInput").value > 40 || document.getElementById("numberInput").value < 3) {
+        html = `<div class="form-group has-danger">
+                    <label class="form-label mt-4" for="numberInput">Number of results</label>
+                    <input type="text" value="" class="form-control is-invalid" id="numberInput" value="${localSongLimit}">
+                    <div class="invalid-feedback">You Can't Use That Number?</div>
+                </div>`
+      document.getElementById("numberSpace").innerHTML = html
+    } else {
+        document.getElementById("settings").style.display = "none"
+        document.getElementById("stylesheet").setAttribute(`href`, `css/${document.getElementById("select-theme").value}.css`)
+    }
 }
 
 document.getElementById("search-text").addEventListener('input', () => searchArtists(document.getElementById("search-text").value))
