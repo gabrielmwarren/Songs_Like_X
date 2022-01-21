@@ -82,7 +82,7 @@ html, body {
   left: 0;
   width: 80px;
   height: 80px;
-  background: rgb(204, 228, 231);
+  background: #2c3e50;
   border-radius: 50%;
   transition: all 1s;
   z-index: 4;
@@ -131,7 +131,7 @@ html, body {
   height: 50px;
   outline: none;
   border: none;
-  background: rgb(137, 183, 201);
+  background: #95a5a6;
   color: white;
   text-shadow: 0 0 10px rgb(207, 196, 196);
   padding: 0 80px 0 20px;
@@ -153,7 +153,7 @@ html, body {
 }
 .search-container input:focus ~ .search-area {
   right: -350px;
-  background: #acacac;
+  background: #95a5a6;
   z-index: 6;
 }
 .search-container input:focus ~ .search-area::before {

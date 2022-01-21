@@ -81,7 +81,7 @@ html, body {
   left: 0;
   width: 80px;
   height: 80px;
-  background: #878a8c;
+  background: #375a7f;
   border-radius: 50%;
   transition: all 1s;
   z-index: 4;
@@ -130,7 +130,7 @@ html, body {
   height: 50px;
   outline: none;
   border: none;
-  background: #878a8c;
+  background: #444;
   color: white;
   text-shadow: 0 0 10px #878a8c;
   padding: 0 80px 0 20px;
