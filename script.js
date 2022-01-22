@@ -5,6 +5,7 @@ const api_key = "51a4048bb0c0585454fb141080d508ad"
 
 document.getElementById("previous").style.display = "none"
 document.getElementById("show_btn").style.display = "none"
+document.getElementById("error").style.display = "none"
 let html = `<div class="form-group" id="numberOfResults">
 <label for="resultSetting" class="form-label mt-4">Number of results</label>
 <input type="number" class="form-control" id="numberInput"  placeholder="Enter number">
@@ -70,7 +71,8 @@ function list_songs(artist, song) {
             }
             catch (error) {
                 html = ''
-                alert("An Error Acoured, Most Likely That Isn't A Song")
+                document.getElementById("errorText").innerText = "I Don't Think That's A Song"
+                document.getElementById("error").style.display = "block"
                 document.getElementById("result").style.display = "none"
                 document.getElementById("previous").style.display = "none"
                 document.getElementById("search-container").style.display = 'block'
@@ -111,7 +113,7 @@ function returnToHome() {
 function button_pressed() {
     let songSearchInput = document.getElementById("search-text-2")
     let artistSearchInput = document.getElementById("search-text")
-    songSearchInput.value && artistSearchInput.value ? list_songs(artistSearchInput.value, songSearchInput.value) : null
+    songSearchInput.value && artistSearchInput.value ? list_songs(artistSearchInput.value, songSearchInput.value) : document.getElementById("errorText").innerText = "Please Fill Out Artist And Song", document.getElementById("error").style.display = "block"
 }
 
 function hide_player() {
@@ -215,6 +217,10 @@ function closeSettings() {
         document.getElementById("settings").style.display = "none"
         document.getElementById("stylesheet").setAttribute(`href`, `css/${document.getElementById("select-theme").value}.css`)
     }
+}
+
+function closeError() {
+    document.getElementById("error").style.display = "none"
 }
 
 document.getElementById("search-text").addEventListener('input', () => searchArtists(document.getElementById("search-text").value))

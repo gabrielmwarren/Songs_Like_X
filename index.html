@@ -10,6 +10,10 @@
     <link rel="stylesheet" type ="text/css" id="stylesheet" href="css/Dark.css">
 </head>
 <body>
+    <div class="alert alert-dismissible alert-danger" id="error">
+      <button type="button" class="btn-close" onclick="closeError()"><i class="fas fa-times-circle"></i></button>
+      <strong>There Has Been An Error!</strong><div id="errorText"></div>
+    </div>
     <h1>Songs Like X</h1>
     <button class="btn btn-success previous" id="previous" onclick="returnToHome()">&laquo; Previous</button>
     <div class="change-theme">
